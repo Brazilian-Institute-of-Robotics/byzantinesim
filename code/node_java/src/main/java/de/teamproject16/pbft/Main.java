@@ -25,6 +25,7 @@ public class Main {
         Logger.getAnonymousLogger();
         System.out.println("HalloMain");
         Receiver receiver = new Receiver();
+        System.out.println("Passou do receiver");
         receiver.start();
         NormalCase algo = new NormalCase(receiver);
         StringBuilder sb = new StringBuilder("[Environment] \n");
