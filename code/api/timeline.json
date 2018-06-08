@@ -1,0 +1,41 @@
+{
+    "nodes": ["1", "2", "3", "4"],
+    "timestamps": {"min": "23428001", "max": "23428013"},
+    "events": [
+        {
+            "id": {"send": 1},
+            "action": "send",
+            "type": "init",
+            "nodes": {"send": "1"},
+            "timestamps": {"send": "23428001"},
+            "data": {"value": "0.5"}
+        },
+        {
+            "id": {"send": 1, "receive": 2},
+            "action": "acknowledge",
+            "type": "init",
+            "nodes": {"send": "1", "receive": "2"},
+            "timestamps": {"send": "23428001", "receive": "23428011"},
+            "data": {"value": "0.5"}
+
+        },
+        {
+            "id": {"send": null, "receive": 3},
+            "action": "acknowledge",
+            "type": "init",
+            "nodes": {"send": "1", "receive": "3"},
+            "timestamps": {"send": null, "receive": "23428013"},
+            "data": {"value": "0.5"}
+        },
+        {
+            "id": {"send": 1, "receive": 4},
+            "action": "acknowledge",
+            "type": "init",
+            "nodes": {"send": "1", "receive": "3"},
+            "timestamps": {"send": "23428001", "receive": "23428013"},
+            "data": {"value": "0.5"}
+        }
+
+    ]
+}
+

@@ -1,0 +1,578 @@
+/* app css stylesheet */
+body {
+  margin: 0;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-variant: small-caps;
+}
+th,
+td {
+  padding: 5px;
+  border: 1px dashed white;
+}
+input {
+  color: black;
+}
+#container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto 0 auto;
+  border: 0 solid transparent;
+  background-color: #124;
+}
+#menubar {
+  width: 100%;
+  padding-top: 2vh;
+  background-color: lightgray;
+  margin: 0 auto 0 auto;
+  display: table;
+  border-spacing: 10px 0;
+  text-align: center;
+}
+#menubar a {
+  background-color: #124;
+  height: 5vh;
+  vertical-align: middle;
+  border-width: 0 5px 0 5px;
+  border-radius: 7px 7px 0 0;
+  margin: 0 3% 0 3%;
+  padding: 1%;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  width: 40%;
+}
+#menubar a:hover {
+  background-color: #126;
+  color: #7cf1ca;
+}
+#main {
+  width: 100%;
+  background-color: #124;
+  color: white;
+}
+#footer {
+  width: 100%;
+  display: block;
+  height: 5vh;
+  position: fixed;
+  bottom: 0;
+  background-color: #124;
+}
+#footer .footer-fillin {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+#footer #footer-content {
+  width: 80%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  color: white;
+  border-top: 1px solid white;
+}
+#nodearea {
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3% 10px;
+  background-color: #124;
+}
+#nodearea .no_data {
+  text-align: center;
+  width: 100%;
+  padding-top: 2em;
+}
+#nodearea,
+#nodearea .node-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#nodearea .node {
+  flex: 1 0 auto;
+  display: inline-block;
+  position: relative;
+  opacity: 1;
+  text-align: center;
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-bottom: 2.1em;
+  box-sizing: border-box;
+  color: black;
+  -webkit-transition: width 0.3s ease-out, height 0.2s ease-out;
+  -moz-transition: width 0.3s ease-out, height 0.2s ease-out;
+  -o-transition: width 0.3s ease-out, height 0.2s ease-out;
+  transition: width 0.3s ease-out, height 0.2s ease-out;
+}
+#nodearea .node a,
+#nodearea .node a:visited {
+  color: black;
+  text-decoration: none;
+}
+#nodearea .node .node-main {
+  border-color: transparent;
+  border-radius: 0.5em;
+  border-width: 0 5px 0 5px;
+  border-style: solid;
+  background-color: cornflowerblue;
+  box-sizing: border-box;
+  padding: 0.5em 1%;
+}
+#nodearea .node h3,
+#nodearea .node h5 {
+  margin-bottom: 0;
+  margin-top: 0;
+  -webkit-transition: font-size 0.3s ease-out, opacity 0.3s ease-out;
+  -moz-transition: font-size 0.3s ease-out, opacity 0.3s ease-out;
+  -o-transition: font-size 0.3s ease-out, opacity 0.3s ease-out;
+  transition: font-size 0.3s ease-out, opacity 0.3s ease-out;
+}
+#nodearea .node .click-hint-wrapper {
+  height: 1.4em;
+  margin-top: -0.5em;
+}
+#nodearea .node .click-hint-wrapper .click-hint {
+  display: block;
+  white-space: nowrap;
+  padding: 0 0.3em;
+  -webkit-transition: width 0.3s ease-out, height 0.2s ease-in-out;
+  -moz-transition: width 0.3s ease-out, height 0.2s ease-in-out;
+  -o-transition: width 0.3s ease-out, height 0.2s ease-in-out;
+  transition: width 0.3s ease-out, height 0.2s ease-in-out;
+}
+#nodearea .node.upscaled {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  height: 70vh;
+}
+#nodearea .node.upscaled h3.id-label {
+  font-size: 2em;
+}
+#nodearea .node.upscaled div.node-main {
+  height: 100%;
+}
+#nodearea .node.reduced {
+  display: none;
+}
+#nodearea .node.non-upscaled:hover .node-main {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #1972ff;
+}
+#nodearea .node.non-upscaled:hover .click-hint {
+  color: black;
+  height: 1.4em;
+  background-color: #1972ff;
+  -webkit-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  -moz-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  -o-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+#nodearea .node.non-upscaled .overview {
+  display: block;
+}
+#nodearea .node.non-upscaled .details {
+  display: none;
+}
+#nodearea .node.upscaled {
+  width: 98%;
+}
+#nodearea .node.upscaled .overview {
+  display: none;
+}
+#nodearea .node.upscaled .overview .click-hint {
+  height: 0;
+}
+#nodearea .node.upscaled .details {
+  display: block;
+}
+#nodearea .node.upscaled .details .value-graph {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+#nodearea .node.leader .node-main {
+  border-color: #c4e3f3;
+}
+#nodearea .node.leader:hover .node-main,
+#nodearea .node.leader:hover .click-hint {
+  border-color: #7cf1ca;
+}
+#nodearea .node.leader:hover .leader-label {
+  color: #7cf1ca;
+}
+#nodearea .node.leader .leader-label {
+  font-style: italic;
+  font-size: 0.8em;
+  color: #c4e3f3;
+}
+#nodearea .node.summary {
+  color: white;
+}
+#nodearea .node.summary .node-main {
+  background-color: cadetblue;
+}
+#nodearea .node.summary.non-upscaled:hover .node-main,
+#nodearea .node.summary.non-upscaled:hover .click-hint {
+  background-color: #7cf1ca;
+  color: white;
+}
+#nodearea .node .click-hint {
+  color: transparent;
+  overflow: hidden;
+  height: 0;
+  position: relative;
+  border-color: transparent;
+  border-width: 0 5px 0 5px;
+  border-style: solid;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  box-sizing: border-box;
+  padding: 0 1%;
+  -webkit-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  -moz-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  -o-transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+#nodearea .node .click-hint-wrapper {
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+#nodearea .node .leader-edge {
+  width: 0;
+  height: 0;
+}
+#failure-table {
+  width: 100%;
+  margin: 5vh 0 0 0;
+  font-variant: small-caps;
+}
+#failure-table h3 {
+  margin: 0 auto 5px auto;
+  text-align: center;
+  width: 50%;
+  /*height: 5vh;*/
+  min-height: 30px;
+  border-bottom: 1px solid white;
+}
+#failure-table div#refresher {
+  width: 30%;
+  margin: 0 auto;
+}
+#failure-table div#refresher button {
+  color: black;
+}
+#failure-table #symbology {
+  float: left;
+  width: 8%;
+  padding: 2%;
+  height: 70vh;
+  margin: 0;
+  vertical-align: top;
+}
+#failure-table #symbology div.sym-section {
+  width: 100%;
+  float: left;
+  margin-bottom: 5px;
+}
+#failure-table #symbology div.sym-section div.circle {
+  margin-right: 5px;
+  float: left;
+  width: 24px;
+  height: 24px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+#failure-table #symbology div.sym-section div.circle.type-init {
+  background: #7cf1cb;
+}
+#failure-table #symbology div.sym-section div.circle.type-propose {
+  background: #85b9f0;
+}
+#failure-table #symbology div.sym-section div.circle.type-prevote {
+  background: #ffcd83;
+}
+#failure-table #symbology div.sym-section div.circle.type-vote {
+  background: #ffad83;
+}
+#failure-table #symbology div.sym-section div.circle div.ringHole {
+  margin: 6px;
+  width: 12px;
+  height: 12px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #124;
+}
+#failure-table #symbology div.sym-section div.arrow {
+  float: left;
+  width: 24px;
+  height: 24px;
+}
+#failure-table #symbology div.sym-section div.arrow div.head {
+  float: left;
+  margin: 6px 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+#failure-table #symbology div.sym-section div.arrow div.head.type-init {
+  border-left: 12px solid #7cf1cb;
+}
+#failure-table #symbology div.sym-section div.arrow div.head.type-propose {
+  border-left: 12px solid #85b9f0;
+}
+#failure-table #symbology div.sym-section div.arrow div.head.type-prevote {
+  border-left: 12px solid #ffcd83;
+}
+#failure-table #symbology div.sym-section div.arrow div.head.type-vote {
+  border-left: 12px solid #ffad83;
+}
+#failure-table #symbology div.sym-section div.arrow div.shaft {
+  float: left;
+  margin: 10px 0;
+  width: 12px;
+  height: 4px;
+}
+#failure-table #symbology div.sym-section div.arrow div.shaft.type-init {
+  background: #7cf1cb;
+}
+#failure-table #symbology div.sym-section div.arrow div.shaft.type-propose {
+  background: #85b9f0;
+}
+#failure-table #symbology div.sym-section div.arrow div.shaft.type-prevote {
+  background: #ffcd83;
+}
+#failure-table #symbology div.sym-section div.arrow div.shaft.type-vote {
+  background: #ffad83;
+}
+#failure-table #symbology div.top-label {
+  width: 100%;
+  font-variant: small-caps;
+  font-size: 1.5em;
+}
+#failure-table #symbology div.sym-label {
+  width: 100%;
+  font-variant: small-caps;
+}
+#failure-table #timeline {
+  float: left;
+  width: 80%;
+  height: 70vh;
+  margin: 0 auto;
+  vertical-align: top;
+  overflow-y: scroll;
+}
+#failure-table #timeline .svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#failure-table #timeline svg .arrow.type-init,
+#failure-table #timeline svg circle.type-init {
+  stroke: #7cf1cb;
+}
+#failure-table #timeline svg .arrow.type-prevote,
+#failure-table #timeline svg circle.type-prevote {
+  stroke: #ffcd83;
+}
+#failure-table #timeline svg .arrow.type-propose,
+#failure-table #timeline svg circle.type-propose {
+  stroke: #85b9f0;
+}
+#failure-table #timeline svg .arrow.type-vote,
+#failure-table #timeline svg circle.type-vote {
+  stroke: #ffad83;
+}
+#failure-table #timeline svg .arrow {
+  stroke-width: 2px;
+  fill: none;
+}
+#failure-table #timeline svg circle.action-acknowledge.type-init {
+  fill: #7cf1cb;
+}
+#failure-table #timeline svg circle.action-acknowledge.type-prevote {
+  fill: #ffcd83;
+}
+#failure-table #timeline svg circle.action-acknowledge.type-propose {
+  fill: #85b9f0;
+}
+#failure-table #timeline svg circle.action-acknowledge.type-vote {
+  fill: #ffad83;
+}
+#failure-table #timeline svg circle.action-send {
+  fill-opacity: 0.0;
+  stroke-width: 3;
+}
+.tooltipster-content p.type,
+.tooltipster-content div.type {
+  text-align: center;
+  font-size: 0.5em;
+  margin-bottom: -0.5em;
+  margin-top: 0;
+}
+.tooltipster-content p.type span,
+.tooltipster-content div.type span {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.tooltipster-content p.value_store label span .node.different {
+  text-decoration: line-through;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-bottom .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-bottom .tooltipster-box {
+  border-left: 0 none #2a2a2a;
+  border-right: 0 none #2a2a2a;
+  border-bottom: 3px solid #7cf1cb;
+  border-top: 3px solid #7cf1cb;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-bottom .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-bottom .tooltipster-arrow-border {
+  border-bottom-color: #7cf1cb;
+  border-top-color: #7cf1cb;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-right .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-right .tooltipster-box {
+  border-top: 0 none #2a2a2a;
+  border-bottom: 0 none #2a2a2a;
+  border-left: 3px solid #7cf1cb;
+  border-right: 3px solid #7cf1cb;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init.tooltipster-right .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init.tooltipster-right .tooltipster-arrow-border {
+  border-left-color: #7cf1cb;
+  border-right-color: #7cf1cb;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-init .tooltipster-content,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-init .tooltipster-content {
+  color: #7cf1cb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-variant: normal;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-bottom .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-bottom .tooltipster-box {
+  border-left: 0 none #2a2a2a;
+  border-right: 0 none #2a2a2a;
+  border-bottom: 3px solid #85b9f0;
+  border-top: 3px solid #85b9f0;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-bottom .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-bottom .tooltipster-arrow-border {
+  border-bottom-color: #85b9f0;
+  border-top-color: #85b9f0;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-right .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-right .tooltipster-box {
+  border-top: 0 none #2a2a2a;
+  border-bottom: 0 none #2a2a2a;
+  border-left: 3px solid #85b9f0;
+  border-right: 3px solid #85b9f0;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose.tooltipster-right .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose.tooltipster-right .tooltipster-arrow-border {
+  border-left-color: #85b9f0;
+  border-right-color: #85b9f0;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-propose .tooltipster-content,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-propose .tooltipster-content {
+  color: #85b9f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-variant: normal;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-bottom .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-bottom .tooltipster-box {
+  border-left: 0 none #2a2a2a;
+  border-right: 0 none #2a2a2a;
+  border-bottom: 3px solid #ffcd83;
+  border-top: 3px solid #ffcd83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-bottom .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-bottom .tooltipster-arrow-border {
+  border-bottom-color: #ffcd83;
+  border-top-color: #ffcd83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-right .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-right .tooltipster-box {
+  border-top: 0 none #2a2a2a;
+  border-bottom: 0 none #2a2a2a;
+  border-left: 3px solid #ffcd83;
+  border-right: 3px solid #ffcd83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote.tooltipster-right .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote.tooltipster-right .tooltipster-arrow-border {
+  border-left-color: #ffcd83;
+  border-right-color: #ffcd83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-prevote .tooltipster-content,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-prevote .tooltipster-content {
+  color: #ffcd83;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-variant: normal;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-top .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-bottom .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-bottom .tooltipster-box {
+  border-left: 0 none #2a2a2a;
+  border-right: 0 none #2a2a2a;
+  border-bottom: 3px solid #ffad83;
+  border-top: 3px solid #ffad83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-top .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-bottom .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-bottom .tooltipster-arrow-border {
+  border-bottom-color: #ffad83;
+  border-top-color: #ffad83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-left .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-right .tooltipster-box,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-right .tooltipster-box {
+  border-top: 0 none #2a2a2a;
+  border-bottom: 0 none #2a2a2a;
+  border-left: 3px solid #ffad83;
+  border-right: 3px solid #ffad83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-left .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote.tooltipster-right .tooltipster-arrow-border,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote.tooltipster-right .tooltipster-arrow-border {
+  border-left-color: #ffad83;
+  border-right-color: #ffad83;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-acknowledge-vote .tooltipster-content,
+.tooltipster-sidetip.tooltipster-punk.tooltipster-punk-send-vote .tooltipster-content {
+  color: #ffad83;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-variant: normal;
+}

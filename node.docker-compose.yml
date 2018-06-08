@@ -1,0 +1,11 @@
+version: '2'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ["main_node.py"]
+    environment:
+      DOCKER_CACHING_TIME: 5
+      NODE_PORT: 4458
+      NODE_DEBUGGER: 0

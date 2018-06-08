@@ -1,0 +1,6 @@
+luckydonald-utils==0.51
+docker-py
+
+# api
+flask  # api
+pony   # db

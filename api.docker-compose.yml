@@ -1,0 +1,31 @@
+version: '2'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./api.Dockerfile
+    restart: "unless-stopped"
+    environment:
+      POSTGRES_HOST: "postgres"  # service name
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASS: "1234secure"
+      POSTGRES_DB: "messages"
+
+  postgres:
+    image: postgres
+    restart: "unless-stopped"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1234secure"
+      POSTGRES_DB: "messages"
+
+  postgres_browser:
+    # image: jacksoncage/phppgadmin
+    build: ./extras/phppgadmin-docker
+    environment:
+      POSTGRES_HOST: "postgres"  # service name
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1234secure"
+      POSTGRES_DEFAULTDB: "messages"
+      # APACHE_SERVERNAME: "postgres_browser"
+      APACHE_SERVERNAME: "localhost"

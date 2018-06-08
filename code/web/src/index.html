@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="pbftGui" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="pbftGui" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="pbftGui" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="pbftGui" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Practical Byzantine Fault Tolerance GUI</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/tooltipster/dist/css/tooltipster.bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="/bower_components/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css" />
+
+  <link rel="stylesheet" type="text/css" media="only screen and (min-width: 481px)" href="desktop.css">
+  <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="mobile.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.animations.css">
+
+  <!-- Scripts -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/d3/d3.js"></script>
+  <script src="/bower_components/highcharts/highcharts.js"></script>
+  <!--<script type="text/javascript" src="/bower_components/tooltipster/dist/js/tooltipster.bundle.min.js"></script><!---->
+  <script type="text/javascript" src="/bower_components/tooltipster/dist/js/tooltipster.bundle.js"></script><!---->
+  <!--<script type="text/javascript" src="/bower_components/svg.js/dist/svg.min.js"></script><!---->
+  <script type="text/javascript" src="/bower_components/svg.js/dist/svg.js"></script><!---->
+  <!--<script type="text/javascript" src="/bower_components/svg.screenbbox.js/dist/svg.screenbbox.min.js"></script><!---->
+  <script type="text/javascript" src="/bower_components/svg.screenbbox.js/dist/svg.screenbbox.js"></script><!---->
+  <!--<script type="text/javascript" src="/bower_components/tooltipster/dist/js/plugins/tooltipster/SVG/tooltipster-SVG.min.js"></script><!---->
+  <script type="text/javascript" src="/bower_components/tooltipster/dist/js/plugins/tooltipster/SVG/tooltipster-SVG.js"></script><!---->
+  <!-- Error handling -->
+  <!--<script src="https://cdn.ravenjs.com/3.9.1/angular/raven.min.js"></script>
+  <script>Raven.config('http://c303c105f206438e8de4cfdd183d0af1@sentry.getstickers.me/7').install()</script>
+  -->
+
+  <!-- Our files -->
+  <script src="config.js"></script>
+
+  <script src="hover-effect.js"></script>
+  <script src="node-handling.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="app.animations.js"></script>
+  <script src="core/core.module.js"></script>
+  <script src="core/node/node.module.js"></script>
+  <script src="core/node/node.service.js"></script>
+  <script src="core/d3/d3.factory.module.js"></script>
+  <script src="core/d3/d3.factory.js"></script>
+  <script src="node-list/node-list.module.js"></script>
+  <script src="node-list/node-list.component.js"></script>
+  <script src="value-graph/value-graph.module.js"></script>
+  <script src="value-graph/value-graph.component.js"></script>
+  <script src="value-graph/value-graph.d3.js"></script>
+  <script src="node-list-view/node-list-view.module.js"></script>
+  <script src="node-list-view/node-list-view.component.js"></script>
+  <script src="failure-table/failure-table.module.js"></script>
+  <script src="failure-table/failure-table.component.js"></script>
+  <script src="failure-table-view/failure-table-view.module.js"></script>
+  <script src="failure-table-view/failure-table-view.component.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="menubar">
+      <a href="#!/nodes">Nodes</a>
+      <a href="#!/failures">Timeline</a>
+    </div>
+    <div id="main">
+      <!--[if lt IE 7]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+      <div ng-view class="view-frame"></div>
+      <!-- In production use:
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+      -->
+    </div>
+    <div id="footer">
+      <div class="footer-fillin">
+        <!-- just for spacing -->
+      </div>
+      <div id="footer-content">
+        (c) by us, duh. Version: <span app-version>&lt;Unknown&gt;</span>
+      </div>
+      <div class="footer-fillin">
+        <!-- just for spacing -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

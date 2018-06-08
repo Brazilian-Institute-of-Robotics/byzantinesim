@@ -1,0 +1,124 @@
+<div id="failure-table" xmlns="http://www.w3.org/1999/html">
+    <h3>Timeline for Message Flow of Nodes</h3>
+    <div id="refresher">
+        <button type="button" ng-click="$ctrl.pollValues();">REFRESH</button>
+        <span id="refresh-label"></span>
+    </div>
+    <!--<span  style="color: black;">
+        <button type="button" ng-click="$ctrl.setupTimeline(null,true)">Scale ON</button>
+        <button type="button" ng-click="$ctrl.setupTimeline(null,false)">Scale OFF</button>
+    </span>-->
+    <div id="symbology">
+        <div class="top-label">Symbols:</div>
+        <div class="sym-section">
+            <div class="sym-label">Init</div>
+            <div class="circle type-init"></div>
+            <div class="circle type-init"><div class="ringHole"></div></div>
+            <div class="arrow"><div class="shaft type-init"></div><div class="head type-init"></div></div>
+        </div>
+        <div class="sym-section">
+            <div class="sym-label">Pre-Prepare</div>
+            <div class="circle type-propose"></div>
+            <div class="circle type-propose"><div class="ringHole"></div></div>
+            <div class="arrow"><div class="shaft type-propose"></div><div class="head type-propose"></div></div>
+        </div>
+        <div class="sym-section">
+            <div class="sym-label">Prepare</div>
+            <div class="circle type-prevote"></div>
+            <div class="circle type-prevote"><div class="ringHole"></div></div>
+            <div class="arrow"><div class="shaft type-prevote"></div><div class="head type-prevote"></div></div>
+        </div>
+        <div class="sym-section">
+            <div class="sym-label">Commit</div>
+            <div class="circle type-vote"></div>
+            <div class="circle type-vote"><div class="ringHole"></div></div>
+            <div class="arrow"><div class="shaft type-vote"></div><div class="head type-vote"></div></div>
+        </div>
+    </div>
+    <div id="timeline">
+        <!-- TIMELINE SLOT -->
+    </div>
+    <script>
+    var tooltipFormat = function(instance, helper, content){
+        var event = {
+            "action": "acknowledge",
+            "type": "init",
+            "data": {
+                "node": 1,
+                "sequence_no": 1490527259,
+                "type": 1,
+                "value": 9.888978958129883
+            },
+            "id": {"receive": 18630, "send": 18618},
+            "nodes": {"receive": 1, "send": 1},
+            "timestamps": {
+                "receive": {"string": "Sun, 26 Mar 2017 11:20:59 GMT", "unix": 1490527259.296773},
+                "send": {"string": "Sun, 26 Mar 2017 11:20:59 GMT", "unix": 1490527259.150057}
+            }
+        };
+        var $origin = $(helper.origin);
+        var dataOptions = $origin.attr('data-meta');
+        if (dataOptions) {
+            event = JSON.parse(dataOptions);
+        }
+
+        var html = "<div class='node-tooltip action-" + event.action + " type-" + event.type + "'>";
+        function add_data(data, title, key, data_wrap, data_class, newline) {
+            var element = data, orig_key = key;
+            var tree = key.split(".");
+            for (var i = 0; i < tree.length; i++) {
+                key = tree[i];
+                if (data.hasOwnProperty(key)) {
+                    element = data[key];
+                } else {
+                    return;
+                }
+            }
+            key = tree.join("-");
+            var clazz = "";
+            if (data_class) {
+                clazz = " class='" + data_class + "'"
+            }
+            var wrap_open = "<span" + clazz + ">", wrap_close = "</span>";
+            if (data_wrap) {
+                wrap_open = "<" + data_wrap + clazz + ">";
+                wrap_close = "</" + data_wrap + ">";
+            }
+            var new_line = " ";
+            if (newline) {
+                new_line = ":<br>"
+            }
+            //console.log("data_wrap", data_wrap, ",", wrap_open, wrap_close);
+
+            html += "<p class='" + key + "'><label>" + title + new_line + wrap_open + element + wrap_close + "</label></p>";
+        }
+        // values every node has:
+        html += "<div class='type'><label><span>" + event.type + "</span> (<span>"+ event.action + "</span>)</div>";
+
+        add_data(event, "Received", "timestamps.receive.string", null, "timestamp");
+        add_data(event.data, "Sequence", "sequence_no", "code");  // "<p><label class='sequence_no'>Sequence <span>" + data.sequence_no + "</span></label></p>" +
+        html += "<p class='nodes'><label>Node <code>" + event.nodes.send + " &rArr; " + event.nodes.receive + "</code></label></p>";
+
+        // some node have:
+        add_data(event.data, "Value", "value", "code", null, true);
+        add_data(event.data, "Proposal", "proposal", "code", null, true);
+        add_data(event.data, "Leader", "leader", "code");
+
+        if (event.data.hasOwnProperty("value_store")) {
+            html += "<p class='value_store'><label>Received Values:<span>" +
+                    event.data.value_store.map(function(e){
+                        var different_sequence_no = e.sequence_no !== event.data.sequence_no;
+                        return "<br><code class='node" + (different_sequence_no? " different" : "") + "' title='Node "+ e.node + (different_sequence_no? " - Sequence " + e.sequence_no : "") + "'>" + e.value + "</code>";
+                    }).join(", ") +
+                    "</span></label></p>";
+        }
+
+        html += "</div>";
+        return html;
+    };
+    var tooltipContent = function (instance, helper) {
+        instance.content($(tooltipFormat(instance, helper, null)));
+    };
+
+    </script>
+</div>

@@ -1,0 +1,65 @@
+<div ng-show="$ctrl.summary && !$ctrl.nodes.length" class="no_data">No recent events</div>
+
+<div class="node summary non-upscaled">
+    <a href="#!/nodes/summary">
+        <div class="node-main">
+            <h3>Summary</h3>
+            <h5>Agreed value:</h5>
+            <span class="value" ng-show="$ctrl.summary">{{node.value}}</span>
+            <span class="value no_data" ng-hide="$ctrl.summary">No recent commit.</span>
+        </div>
+        <div class="click-hint-wrapper">
+            <div class="click-hint">click for more details</div>
+        </div>
+    </a>
+</div>
+
+<!-- NOTE: for scaling nodes insert: onclick="handleNodeScaling(this)" -->
+<div ng-repeat="node in $ctrl.nodes"
+     class="node non-upscaled {{( $ctrl.leader === node.id) ? 'leader' : ''}}">
+    <a href="#!/nodes/{{node.id}}">
+        <div class="node-main">
+            <h3 class="id-label">
+                Node {{node.id}} <span class="leader-label" ng-show="{{$ctrl.leader===node.id}}">Leader</span>
+            </h3>
+            <div class="overview">
+                <h5 class="value-label">
+                    Value:
+                </h5>
+                <span class="value">
+                    {{node.value}}
+                </span>
+            </div>
+            <!--<div class="details">
+                <div class="value-graph">
+                    <value-graph></value-graph>
+                </div>
+            </div>-->
+        </div>
+        <div class="click-hint-wrapper">
+            <div class="click-hint">click for more details</div>
+        </div>
+    </a>
+</div>
+
+<!--
+<table>
+    <caption>
+        JSON Table
+    </caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>VALUE</th>
+            <th>Leader</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="node in $ctrl.nodes">
+            <td>{{node.id}}</td>
+            <td>{{node.value}}</td>
+            <td>{{(node.leader == true || node.leader == false) ? node.leader : 'undefined'}}</td>
+        </tr>
+    </tbody>
+</table>
+-->

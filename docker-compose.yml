@@ -1,0 +1,82 @@
+version: '2'
+services:
+  # # Python node
+  # node:
+  #   extends:
+  #     file: node.docker-compose.yml
+  #     service: node
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   environment:
+  #     NODE_DEBUGGER: "False"
+  #
+  #  # entrypoint: ["/bin/bash"]
+  #
+  #  #  docker run -ti --entrypoint /bin/bash 9b6a81855c06
+  #  #  d-c run --entrypoint /bin/bash node-3
+  #  #  NODE_ID=3 NODE_TOTAL=4 POSSIBLE_FAILURES=1 NODE_HOST=teamproject16_node-{i}_1 NODE_PORT=4458 python main_node.py
+
+  node:
+    extends:
+      file: code/node_java/docker-compose.yml
+      service: node_java
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      NODE_DEBUGGER: "False"
+      NODE_DEBUG: "False"
+      # API_HOST: "http://192.168.0.42"
+      API_HOST: ${API_HOST}
+
+  api:
+    extends:
+      file: api.docker-compose.yml
+      service: api
+    ports:
+     - "80:80"
+    restart: "no"
+    command: ["python", "main_api.py"]
+
+    #entrypoint: []
+    #command: ["ls", "-la"]
+
+  web:
+    extends:
+      file: code/web/docker-compose.yml
+      service: web
+    environment:
+      PORT: 8000
+      # API_URL: "http://192.168.0.42"
+      API_URL: ${API_HOST}
+    ports:
+     - "8000:8000"
+    entrypoint: ["/entrypoint.sh"]
+
+  web_static:
+    extends:
+      file: code/web/docker-compose.yml
+      service: web
+    environment:
+      PORT: 8001
+      API_URL: "http://localhost:8001/example/"
+      # `${VM_HOST:-localhost}` will evaluate to `localhost` if $VM_HOST is unset or empty in the environment.
+    ports:
+     - "8001:8001"
+    entrypoint: ["/entrypoint.sh"]
+
+
+
+  postgres:
+    extends:
+      file: api.docker-compose.yml
+      service: postgres
+    #volumes:
+    #  - /data/postgres:/data/postgres
+
+
+  postgres_browser:
+    extends:
+      file: api.docker-compose.yml
+      service: postgres_browser
+    ports:
+     - "8080:80"
